@@ -1,13 +1,10 @@
 #include<iostream> 
-#include <vector>  
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>  
+#include "normalGen.h"
 
 
-using namespace cv;
+using namespace std;
 
-void NormalMapGen(){
+void NormalMapGen1(){
 
 	//Mat mat1 = imread("1.png");
 
@@ -28,7 +25,7 @@ void NormalMapGen(){
 	for (int i = 0; i < mat.rows; i += t * 8) {
 		for (int j = 0; j < mat.cols; j ++) {
 
-			if (true) {
+			if (false) {
 				for (int k = 0; k < t; k++) {
 					Vec4b&rgba0 = mat.at<Vec4b>(i + k, j);
 					rgba0[0] = 191;
@@ -87,7 +84,7 @@ void NormalMapGen(){
 	for (int i = 0; i < mat.rows; i++) {
 		int start = 0;
 		start = (i % 40 / 8 - 2) * 8;
-		for (int j = start; j < mat.cols; j += t * 40) {
+		for (int j = 0; j < mat.cols; j += t * 8) {
 
 			if (false) {
 				/*
@@ -155,131 +152,6 @@ void NormalMapGen(){
 
 			}
 
-			if (true) {
-				/*
-				int start = (i % 40 / 8 - 2) * 8;
-				j += t * 40
-				*/
-				if (j < 0) continue;
-				for (int k = 0; k < 24; k += 8) {
-					if (j + k >= mat.cols) continue;
-					Vec4b&rgba0 = mat.at<Vec4b>(i, j + k);
-					rgba0[0] = 191;
-					rgba0[1] = 0;
-					rgba0[2] = 127;
-					rgba0[3] = UCHAR_MAX;
-
-					if (j + t * 1 + k >= mat.cols) continue;
-					Vec4b&rgba1 = mat.at<Vec4b>(i, j + t * 1 + k);
-					rgba1[0] = 191;
-					rgba1[1] = 47;
-					rgba1[2] = 127;
-					rgba1[3] = UCHAR_MAX;
-
-					if (j + t * 2 + k >= mat.cols) continue;
-					Vec4b&rgba2 = mat.at<Vec4b>(i, j + t * 2 + k);
-					rgba2[0] = 255;
-					rgba2[1] = 63;
-					rgba2[2] = 127;
-					rgba2[3] = UCHAR_MAX;
-
-					if (j + t * 3 + k >= mat.cols) continue;
-					Vec4b&rgba3 = mat.at<Vec4b>(i, j + t * 3 + k);
-					rgba3[0] = 255;
-					rgba3[1] = 127;
-					rgba3[2] = 127;
-					rgba3[3] = UCHAR_MAX;
-
-					if (j + t * 4 + k >= mat.cols) continue;
-					Vec4b&rgba4 = mat.at<Vec4b>(i, j + t * 4 + k);
-					rgba4[0] = 255;
-					rgba4[1] = 127;
-					rgba4[2] = 127;
-					rgba4[3] = UCHAR_MAX;
-
-					if (j + t * 5 + k >= mat.cols) continue;
-					Vec4b&rgba5 = mat.at<Vec4b>(i, j + t * 5 + k);
-					rgba5[0] = 255;
-					rgba5[1] = 191;
-					rgba5[2] = 127;
-					rgba5[3] = UCHAR_MAX;
-
-					if (j + t * 6 + k >= mat.cols) continue;
-					Vec4b&rgba6 = mat.at<Vec4b>(i, j + t * 6 + k);
-					rgba6[0] = 191;
-					rgba6[1] = 207;
-					rgba6[2] = 127;
-					rgba6[3] = UCHAR_MAX;
-
-					if (j + t * 7 + k >= mat.cols) continue;
-					Vec4b&rgba7 = mat.at<Vec4b>(i, j + t * 7 + k);
-					rgba7[0] = 191;
-					rgba7[1] = 255;
-					rgba7[2] = 127;
-					rgba7[3] = UCHAR_MAX;
-				}
-
-			}
-
-			if (false) {
-				/*
-
-				if (i % 32 < 24){
-				start = 8;
-				}
-				t * 16
-				*/
-				for (int k = 0; k < t; k++) {
-					Vec4b&rgba0 = mat.at<Vec4b>(i, j + k);
-					rgba0[0] = 191;
-					rgba0[1] = 0;
-					rgba0[2] = 127;
-					rgba0[3] = UCHAR_MAX;
-
-					Vec4b&rgba1 = mat.at<Vec4b>(i, j + t * 1 + k);
-					rgba1[0] = 191;
-					rgba1[1] = 47;
-					rgba1[2] = 127;
-					rgba1[3] = UCHAR_MAX;
-
-					Vec4b&rgba2 = mat.at<Vec4b>(i, j + t * 2 + k);
-					rgba2[0] = 255;
-					rgba2[1] = 63;
-					rgba2[2] = 127;
-					rgba2[3] = UCHAR_MAX;
-
-					Vec4b&rgba3 = mat.at<Vec4b>(i, j + t * 3 + k);
-					rgba3[0] = 255;
-					rgba3[1] = 127;
-					rgba3[2] = 127;
-					rgba3[3] = UCHAR_MAX;
-
-					Vec4b&rgba4 = mat.at<Vec4b>(i, j + t * 4 + k);
-					rgba4[0] = 255;
-					rgba4[1] = 127;
-					rgba4[2] = 127;
-					rgba4[3] = UCHAR_MAX;
-
-					Vec4b&rgba5 = mat.at<Vec4b>(i, j + t * 5 + k);
-					rgba5[0] = 255;
-					rgba5[1] = 191;
-					rgba5[2] = 127;
-					rgba5[3] = UCHAR_MAX;
-
-					Vec4b&rgba6 = mat.at<Vec4b>(i, j + t * 6 + k);
-					rgba6[0] = 191;
-					rgba6[1] = 207;
-					rgba6[2] = 127;
-					rgba6[3] = UCHAR_MAX;
-
-					Vec4b&rgba7 = mat.at<Vec4b>(i, j + t * 7 + k);
-					rgba7[0] = 191;
-					rgba7[1] = 255;
-					rgba7[2] = 127;
-					rgba7[3] = UCHAR_MAX;
-				}
-
-			}
 
 			if (false) {
 				/*
@@ -454,22 +326,26 @@ void NormalMapGen(){
 			}
 
 			if (false) {
+				/*
+				t * 8
+				*/
+
 				Vec4b&rgba0 = mat.at<Vec4b>(i, j);
 				rgba0[0] = 191;
-				rgba0[1] = 0;
-				rgba0[2] = 127;
+				rgba0[1] = 127;
+				rgba0[2] = 0;
 				rgba0[3] = UCHAR_MAX;
 
 				Vec4b&rgba1 = mat.at<Vec4b>(i, j + 1);
 				rgba1[0] = 191;
-				rgba1[1] = 47;
-				rgba1[2] = 127;
+				rgba1[1] = 127;
+				rgba1[2] = 47;
 				rgba1[3] = UCHAR_MAX;
 
 				Vec4b&rgba2 = mat.at<Vec4b>(i, j + 2);
 				rgba2[0] = 255;
-				rgba2[1] = 63;
-				rgba2[2] = 127;
+				rgba2[1] = 127;
+				rgba2[2] = 63;
 				rgba2[3] = UCHAR_MAX;
 
 				Vec4b&rgba3 = mat.at<Vec4b>(i, j + 3);
@@ -486,20 +362,20 @@ void NormalMapGen(){
 
 				Vec4b&rgba5 = mat.at<Vec4b>(i, j + 5);
 				rgba5[0] = 255;
-				rgba5[1] = 191;
-				rgba5[2] = 127;
+				rgba5[1] = 127;
+				rgba5[2] = 191;
 				rgba5[3] = UCHAR_MAX;
 
 				Vec4b&rgba6 = mat.at<Vec4b>(i, j + 6);
 				rgba6[0] = 191;
-				rgba6[1] = 207;
-				rgba6[2] = 127;
+				rgba6[1] = 127;
+				rgba6[2] = 207;
 				rgba6[3] = UCHAR_MAX;
 
 				Vec4b&rgba7 = mat.at<Vec4b>(i, j + 7);
 				rgba7[0] = 191;
-				rgba7[1] = 255;
-				rgba7[2] = 127;
+				rgba7[1] = 127;
+				rgba7[2] = 255;
 				rgba7[3] = UCHAR_MAX;
 
 				for (int k = 8; k < 16; k++) {
@@ -512,30 +388,59 @@ void NormalMapGen(){
 				}
 			}
 
-			if (false) {
+			if (true) {
+
+				/*
+				t * 8
+				*/
+
 				Vec4b&rgba0 = mat.at<Vec4b>(i, j);
-				rgba0[0] = 127;
+				rgba0[0] = 191;
 				rgba0[1] = 127;
 				rgba0[2] = 0;
-				rgba0[3] = 255;
+				rgba0[3] = UCHAR_MAX;
 
 				Vec4b&rgba1 = mat.at<Vec4b>(i, j + 1);
-				rgba1[0] = 127;
-				rgba1[1] = 0;
-				rgba1[2] = 0;
-				rgba1[3] = 255;
+				rgba1[0] = 191;
+				rgba1[1] = 127;
+				rgba1[2] = 47;
+				rgba1[3] = UCHAR_MAX;
 
-				/*Vec4b&rgba2 = mat.at<Vec4b>(i, j + 2);
-				rgba2[0] = 0;
+				Vec4b&rgba2 = mat.at<Vec4b>(i, j + 2);
+				rgba2[0] = 255;
 				rgba2[1] = 127;
-				rgba2[2] = 0;
+				rgba2[2] = 63;
 				rgba2[3] = UCHAR_MAX;
 
 				Vec4b&rgba3 = mat.at<Vec4b>(i, j + 3);
 				rgba3[0] = 255;
-				rgba3[1] = 0;
-				rgba3[2] = 0;
-				rgba3[3] = UCHAR_MAX;*/
+				rgba3[1] = 127;
+				rgba3[2] = 127;
+				rgba3[3] = UCHAR_MAX;
+
+				Vec4b&rgba4 = mat.at<Vec4b>(i, j + 4);
+				rgba4[0] = 255;
+				rgba4[1] = 127;
+				rgba4[2] = 127;
+				rgba4[3] = UCHAR_MAX;
+
+				Vec4b&rgba5 = mat.at<Vec4b>(i, j + 5);
+				rgba5[0] = 255;
+				rgba5[1] = 127;
+				rgba5[2] = 191;
+				rgba5[3] = UCHAR_MAX;
+
+				Vec4b&rgba6 = mat.at<Vec4b>(i, j + 6);
+				rgba6[0] = 191;
+				rgba6[1] = 127;
+				rgba6[2] = 207;
+				rgba6[3] = UCHAR_MAX;
+
+				Vec4b&rgba7 = mat.at<Vec4b>(i, j + 7);
+				rgba7[0] = 191;
+				rgba7[1] = 127;
+				rgba7[2] = 255;
+				rgba7[3] = UCHAR_MAX;
 			}
 		}
 	}
@@ -545,6 +450,12 @@ void NormalMapGen(){
 	compression_params.push_back(9);
 
 	imwrite("newim.png", mat, compression_params);
+}
+
+void NormalMapGen() {
+	NormalMap nmap = NormalMap();
+	nmap.ColsGenAll();
+	nmap.writeToFile("newim.png");
 }
 
 void NormalMapGet() {
