@@ -10,75 +10,9 @@ void NormalMapGen1(){
 
 	Mat mat(2048, 2048, CV_8UC4);
 
-	//for (int i = 0; i < mat.rows; i++) {
-	//	for (int j = 0; j < mat.cols; j++) {
-	//		Vec4b&rgba = mat.at<Vec4b>(i, j);
-	//		Vec3b&rgba1 = mat1.at<Vec3b>(i, j);
-	//		rgba[0] = rgba1[0];
-	//		rgba[1] = rgba1[1];
-	//		rgba[2] = rgba1[2];
-	//		rgba[3] = 255;
-	//	}
-	//}
+
 
 	int t = 1;
-	for (int i = 0; i < mat.rows; i += t * 8) {
-		for (int j = 0; j < mat.cols; j ++) {
-
-			if (false) {
-				for (int k = 0; k < t; k++) {
-					Vec4b&rgba0 = mat.at<Vec4b>(i + k, j);
-					rgba0[0] = 191;
-					rgba0[1] = 255;
-					rgba0[2] = 127;
-					rgba0[3] = UCHAR_MAX;
-
-					Vec4b&rgba1 = mat.at<Vec4b>(i + t * 1 + k, j);
-					rgba1[0] = 191;
-					rgba1[1] = 207;
-					rgba1[2] = 127;
-					rgba1[3] = UCHAR_MAX;
-
-					Vec4b&rgba2 = mat.at<Vec4b>(i + t * 2 + k, j);
-					rgba2[0] = 255;
-					rgba2[1] = 191;
-					rgba2[2] = 127;
-					rgba2[3] = UCHAR_MAX;
-
-					Vec4b&rgba3 = mat.at<Vec4b>(i + t * 3 + k, j);
-					rgba3[0] = 255;
-					rgba3[1] = 127;
-					rgba3[2] = 127;
-					rgba3[3] = UCHAR_MAX;
-
-					Vec4b&rgba4 = mat.at<Vec4b>(i + t * 4 + k, j);
-					rgba4[0] = 255;
-					rgba4[1] = 127;
-					rgba4[2] = 127;
-					rgba4[3] = UCHAR_MAX;
-
-					Vec4b&rgba5 = mat.at<Vec4b>(i + t * 5 + k, j);
-					rgba5[0] = 255;
-					rgba5[1] = 63;
-					rgba5[2] = 127;
-					rgba5[3] = UCHAR_MAX;
-
-					Vec4b&rgba6 = mat.at<Vec4b>(i + t * 6 + k, j);
-					rgba6[0] = 191;
-					rgba6[1] = 47;
-					rgba6[2] = 127;
-					rgba6[3] = UCHAR_MAX;
-
-					Vec4b&rgba7 = mat.at<Vec4b>(i + t * 7 + k, j);
-					rgba7[0] = 191;
-					rgba7[1] = 0;
-					rgba7[2] = 127;
-					rgba7[3] = UCHAR_MAX;
-				}
-			}
-		}
-
-	}
 
 
 	for (int i = 0; i < mat.rows; i++) {
@@ -273,175 +207,9 @@ void NormalMapGen1(){
 
 			}
 
-			if (false) {
-				for (int k = 0; k < t; k++) {
-					Vec4b&rgba0 = mat.at<Vec4b>(i, j + k);
-					rgba0[0] = 225;
-					rgba0[1] = 148;
-					rgba0[2] = 40;
-					rgba0[3] = UCHAR_MAX;
 
-					Vec4b&rgba1 = mat.at<Vec4b>(i, j + t * 1 + k);
-					rgba1[0] = 225;
-					rgba1[1] = 148;
-					rgba1[2] = 47;
-					rgba1[3] = UCHAR_MAX;
 
-					Vec4b&rgba2 = mat.at<Vec4b>(i, j + t * 2 + k);
-					rgba2[0] = 255;
-					rgba2[1] = 127;
-					rgba2[2] = 63;
-					rgba2[3] = UCHAR_MAX;
-
-					Vec4b&rgba3 = mat.at<Vec4b>(i, j + t * 3 + k);
-					rgba3[0] = 255;
-					rgba3[1] = 127;
-					rgba3[2] = 127;
-					rgba3[3] = UCHAR_MAX;
-
-					Vec4b&rgba4 = mat.at<Vec4b>(i, j + t * 4 + k);
-					rgba4[0] = 255;
-					rgba4[1] = 127;
-					rgba4[2] = 127;
-					rgba4[3] = UCHAR_MAX;
-
-					Vec4b&rgba5 = mat.at<Vec4b>(i, j + t * 5 + k);
-					rgba5[0] = 255;
-					rgba5[1] = 127;
-					rgba5[2] = 191;
-					rgba5[3] = UCHAR_MAX;
-
-					Vec4b&rgba6 = mat.at<Vec4b>(i, j + t * 6 + k);
-					rgba6[0] = 225;
-					rgba6[1] = 152;
-					rgba6[2] = 207;
-					rgba6[3] = UCHAR_MAX;
-
-					Vec4b&rgba7 = mat.at<Vec4b>(i, j + t * 7 + k);
-					rgba7[0] = 225;
-					rgba7[1] = 152;
-					rgba7[2] = 233;
-					rgba7[3] = UCHAR_MAX;
-				}
-			}
-
-			if (false) {
-				/*
-				t * 8
-				*/
-
-				Vec4b&rgba0 = mat.at<Vec4b>(i, j);
-				rgba0[0] = 191;
-				rgba0[1] = 127;
-				rgba0[2] = 0;
-				rgba0[3] = UCHAR_MAX;
-
-				Vec4b&rgba1 = mat.at<Vec4b>(i, j + 1);
-				rgba1[0] = 191;
-				rgba1[1] = 127;
-				rgba1[2] = 47;
-				rgba1[3] = UCHAR_MAX;
-
-				Vec4b&rgba2 = mat.at<Vec4b>(i, j + 2);
-				rgba2[0] = 255;
-				rgba2[1] = 127;
-				rgba2[2] = 63;
-				rgba2[3] = UCHAR_MAX;
-
-				Vec4b&rgba3 = mat.at<Vec4b>(i, j + 3);
-				rgba3[0] = 255;
-				rgba3[1] = 127;
-				rgba3[2] = 127;
-				rgba3[3] = UCHAR_MAX;
-
-				Vec4b&rgba4 = mat.at<Vec4b>(i, j + 4);
-				rgba4[0] = 255;
-				rgba4[1] = 127;
-				rgba4[2] = 127;
-				rgba4[3] = UCHAR_MAX;
-
-				Vec4b&rgba5 = mat.at<Vec4b>(i, j + 5);
-				rgba5[0] = 255;
-				rgba5[1] = 127;
-				rgba5[2] = 191;
-				rgba5[3] = UCHAR_MAX;
-
-				Vec4b&rgba6 = mat.at<Vec4b>(i, j + 6);
-				rgba6[0] = 191;
-				rgba6[1] = 127;
-				rgba6[2] = 207;
-				rgba6[3] = UCHAR_MAX;
-
-				Vec4b&rgba7 = mat.at<Vec4b>(i, j + 7);
-				rgba7[0] = 191;
-				rgba7[1] = 127;
-				rgba7[2] = 255;
-				rgba7[3] = UCHAR_MAX;
-
-				for (int k = 8; k < 16; k++) {
-					Vec4b&rgba7 = mat.at<Vec4b>(i, j + 7);
-					rgba7[0] = 255;
-					rgba7[1] = 127;
-					rgba7[2] = 127;
-					rgba7[3] = UCHAR_MAX;
-
-				}
-			}
-
-			if (true) {
-
-				/*
-				t * 8
-				*/
-
-				Vec4b&rgba0 = mat.at<Vec4b>(i, j);
-				rgba0[0] = 191;
-				rgba0[1] = 127;
-				rgba0[2] = 0;
-				rgba0[3] = UCHAR_MAX;
-
-				Vec4b&rgba1 = mat.at<Vec4b>(i, j + 1);
-				rgba1[0] = 191;
-				rgba1[1] = 127;
-				rgba1[2] = 47;
-				rgba1[3] = UCHAR_MAX;
-
-				Vec4b&rgba2 = mat.at<Vec4b>(i, j + 2);
-				rgba2[0] = 255;
-				rgba2[1] = 127;
-				rgba2[2] = 63;
-				rgba2[3] = UCHAR_MAX;
-
-				Vec4b&rgba3 = mat.at<Vec4b>(i, j + 3);
-				rgba3[0] = 255;
-				rgba3[1] = 127;
-				rgba3[2] = 127;
-				rgba3[3] = UCHAR_MAX;
-
-				Vec4b&rgba4 = mat.at<Vec4b>(i, j + 4);
-				rgba4[0] = 255;
-				rgba4[1] = 127;
-				rgba4[2] = 127;
-				rgba4[3] = UCHAR_MAX;
-
-				Vec4b&rgba5 = mat.at<Vec4b>(i, j + 5);
-				rgba5[0] = 255;
-				rgba5[1] = 127;
-				rgba5[2] = 191;
-				rgba5[3] = UCHAR_MAX;
-
-				Vec4b&rgba6 = mat.at<Vec4b>(i, j + 6);
-				rgba6[0] = 191;
-				rgba6[1] = 127;
-				rgba6[2] = 207;
-				rgba6[3] = UCHAR_MAX;
-
-				Vec4b&rgba7 = mat.at<Vec4b>(i, j + 7);
-				rgba7[0] = 191;
-				rgba7[1] = 127;
-				rgba7[2] = 255;
-				rgba7[3] = UCHAR_MAX;
-			}
+			
 		}
 	}
 
@@ -453,9 +221,70 @@ void NormalMapGen1(){
 }
 
 void NormalMapGen() {
-	NormalMap nmap = NormalMap();
+	NormalMap nmap = NormalMap(8192);
 	nmap.ColsGenAll();
-	nmap.writeToFile("newim.png");
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_8192.png");
+
+
+	/*
+		size
+	*
+	nmap.setLineStyle(0);
+
+	nmap = NormalMap(64);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_64.png");
+
+	nmap = NormalMap(128);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_128.png");
+
+	nmap = NormalMap(256);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_256.png");
+
+	nmap = NormalMap(512);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_512.png");
+
+	nmap = NormalMap(1024);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_1024.png");
+
+	nmap = NormalMap(2048);
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_2048.png");
+	*/
+
+
+	/*
+	mats
+	*
+	nmap.RowsGenInterval(1, 1, 1, 1);
+	nmap.writeToFile("mat_1111_0_1.png");
+
+	nmap.ColsGenInterval(1, 1, 1, 1);
+	nmap.writeToFile("mat_c1111_0_1.png");
+
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(1, 1, 2, 2);
+	nmap.writeToFile("mat_1122_0_1.png");
+
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(2, 2, 4, 4);
+	nmap.writeToFile("mat_2244_0_1.png");
+
+	nmap.ColsGenAll();
+	nmap.RowsGenInterval(3, 1, 4, 2);
+	nmap.writeToFile("mat_3142_0_1.png");
+	/**/
 }
 
 void NormalMapGet() {
