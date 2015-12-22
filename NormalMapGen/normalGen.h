@@ -8,7 +8,7 @@ using namespace cv;
 
 const int WIDTHBASE = 8;
 const int COLORSIZE = 4;
-const int LINESTYLES = 2;
+const int LINESTYLES = 4;
 
 /*verticle: x, y, z, a*/
 uchar FLAT[COLORSIZE] = {127, 127, 255, 255};
@@ -20,14 +20,33 @@ uchar LINESTYLE[WIDTHBASE * COLORSIZE * LINESTYLES] = {	127, 255, 191, 255,
 														127, 63, 255, 255,
 														127, 47, 191, 255,
 														127, 0, 191, 255,
-																													152, 233, 225, 255,
+																
+														152, 233, 225, 255,
 														152, 207, 225, 255,
 														127, 191, 255, 255,
 														127, 127, 255, 255,
 														127, 127, 255, 255,
 														127, 63, 255, 255, 
 														148, 47, 225, 255,
-														148, 40, 225, 255 };
+														148, 40, 225, 255,
+
+														127, 255, 191, 255,
+														127, 207, 191, 255,
+														127, 191, 255, 255,
+														127, 142, 255, 255,
+														127, 112, 255, 255,
+														127, 63, 255, 255,
+														127, 47, 191, 255,
+														127, 0, 191, 255,
+
+														152, 233, 191, 255,
+														152, 207, 191, 255,
+														127, 191, 255, 255,
+														127, 142, 255, 255,
+														127, 112, 255, 255,
+														127, 63, 255, 255,
+														148, 47, 191, 255,
+														148, 20, 191, 255 };
 
 class NormalMap {
 
@@ -257,6 +276,121 @@ public:
 
 	}
 
+	void RowsFirstEdge(int a, int b, int c, int d) {
+		/*
+		the first a * b square are rows in a c * d square
+		*/
 
+		int step = lineWidth * WIDTHBASE;
+
+		//edit row edges
+		for (int i = 0; i < mat.rows; i++) {
+			for (int j = 0; j < mat.cols; j += step * d) {
+				if (i / step % c < a) {
+					//(0..a) * (0..b)
+					{
+						//left side
+						Vec4b &rgba = mat.at<Vec4b>(i, j);
+						uchar* color = lineStyle + 7 * COLORSIZE;
+						rgba[2] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i, j + 1);
+						uchar* color1 = lineStyle + 6 * COLORSIZE;
+						rgba1[2] = color1[1];
+					}
+					{
+						//right side
+						Vec4b &rgba = mat.at<Vec4b>(i, j + step * b - 1);
+						uchar* color = lineStyle;
+						rgba[2] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b - 2);
+						uchar* color1 = lineStyle + 1 * COLORSIZE;
+						rgba1[2] = color1[1];
+					}
+				}
+				else {
+					//(a..c) * (b..d)
+					{
+						//left side
+						Vec4b &rgba = mat.at<Vec4b>(i, j + step * b);
+						uchar* color = lineStyle + 7 * COLORSIZE;
+						rgba[2] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b + 1);
+						uchar* color1 = lineStyle + 6 * COLORSIZE;
+						rgba1[2] = color1[1];
+					}
+					{
+						//right side
+						Vec4b &rgba = mat.at<Vec4b>(i, j + step * d - 1);
+						uchar* color = lineStyle;
+						rgba[2] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * d - 2);
+						uchar* color1 = lineStyle + 1 * COLORSIZE;
+						rgba1[2] = color1[1];
+					}
+				}
+			}
+		}
+
+		//edit col edges
+		for (int i = 0; i < mat.rows; i += step * c) {
+			for (int j = 0; j < mat.cols; j++) {
+				if (j / step % d < b) {
+					//(a..c) * (0..b)
+					{
+						//up side
+						Vec4b &rgba = mat.at<Vec4b>(i + step * a, j);
+						uchar* color = lineStyle;
+						rgba[1] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i + step * a + 1, j);
+						uchar* color1 = lineStyle + 1 * COLORSIZE;
+						rgba1[1] = color1[1];
+					}
+					{
+						//down side
+						Vec4b &rgba = mat.at<Vec4b>(i + step * c - 1, j);
+						uchar* color = lineStyle + 7 * COLORSIZE;
+						rgba[1] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i + step * c - 2, j);
+						uchar* color1 = lineStyle + 6 * COLORSIZE;
+						rgba1[1] = color1[1];
+					}
+				}
+				else {
+					//(0..a) * (b..d)
+					{
+						//up side
+						Vec4b &rgba = mat.at<Vec4b>(i, j);
+						uchar* color = lineStyle;
+						rgba[1] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i + 1, j);
+						uchar* color1 = lineStyle + 1 * COLORSIZE;
+						rgba1[1] = color1[1];
+					}
+					{
+						//down side
+						Vec4b &rgba = mat.at<Vec4b>(i + step * a - 1, j);
+						uchar* color = lineStyle + 7 * COLORSIZE;
+						rgba[1] = color[1];
+
+						Vec4b &rgba1 = mat.at<Vec4b>(i + step * a - 2, j);
+						uchar* color1 = lineStyle + 6 * COLORSIZE;
+						rgba1[1] = color1[1];
+					}
+				}
+			}
+		}
+
+	}
+
+	void ColsFirstEdge() {
+
+	}
 
 };

@@ -221,10 +221,12 @@ void NormalMapGen1(){
 }
 
 void NormalMapGen() {
-	NormalMap nmap = NormalMap(8192);
+	NormalMap nmap = NormalMap(512);
+	nmap.setLineStyle(3);
 	nmap.ColsGenAll();
-	nmap.RowsGenInterval(1, 1, 2, 2);
-	nmap.writeToFile("mat_1122_8192.png");
+	nmap.RowsGenInterval(2, 2, 4, 4);
+	nmap.RowsFirstEdge(2, 2, 4, 4);
+	nmap.writeToFile("mat_2244_edge3.png");
 
 
 	/*
