@@ -222,22 +222,17 @@ void NormalMapGen1(){
 
 void NormalMapGen() {
 	NormalMap nmap = NormalMap(512);
+
+	//nmap.ColsGenAll();
+	//nmap.RowsGenLean(4, 4, 3, 1);
+	//nmap.writeToFile("mat_.png");
 	nmap.setLineStyle(1);
+	nmap.setLineWidth(1);
+
 
 	nmap.ColsGenAll();
-	nmap.RowsGenInterval(1, 1, 2, 2);
-	nmap.RowsFirstEdge(1, 1, 2, 2);
-	nmap.ColsSecondEdge(1, 1, 2, 2);
-	nmap.writeToFile("mat_1122_1_edge.png");
-
-
-	nmap.setLineWidth(8);
-	nmap.ColsGenAll();
-	nmap.RowsGenInterval(1, 1, 2, 2);
-	nmap.RowsFirstEdge(1, 1, 2, 2);
-	nmap.ColsSecondEdge(1, 1, 2, 2);
-	nmap.writeToFile("mat_1122_8_edge.png");
-
+	nmap.RowsGenLean(2, 4, 2, 3);
+	nmap.writeToFile("lean6.png");
 
 	/*
 		size
