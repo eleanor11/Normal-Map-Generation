@@ -8,7 +8,7 @@ using namespace cv;
 
 const int WIDTHBASE = 8;
 const int COLORSIZE = 4;
-const int LINESTYLES = 5;
+const int LINESTYLES = 6;
 
 /*verticle: x, y, z, a*/
 uchar FLAT[COLORSIZE] = {127, 127, 255, 255};
@@ -55,7 +55,19 @@ uchar LINESTYLE[WIDTHBASE * COLORSIZE * LINESTYLES] = {	127, 255, 191, 255,
 														127, 127, 255, 255,
 														127, 0, 255, 255,
 														127, 0, 255, 255,
-														127, 127, 255, 255 };
+														127, 127, 255, 255,
+
+														//circle(-70, -45, -20, 20, 45, 70)
+														127, 247, 171, 255, 
+														127, 217, 217, 255,
+														127, 171, 247, 255,
+														127, 83, 247, 255,
+														127, 37, 217, 255,
+														127, 7, 171, 255,
+														127, 127, 255, 255,
+														127, 127, 255, 255,
+
+};
 
 class NormalMap {
 
@@ -125,7 +137,13 @@ public:
 			for (int j = 0; j < mat.cols; j++) {
 				for (int k = 0; k < WIDTHBASE; k++) {
 					uchar* color = lineStyle + k * COLORSIZE;
+					if (i + k * lineWidth >= mat.rows) {
+						break;
+					}
 					for (int l = 0; l < lineWidth; l++) {
+						if (i + k * lineWidth + l >= mat.rows) {
+							break;
+						}
 						Vec4b &rgba = mat.at<Vec4b>(i + k * lineWidth + l, j);
 						rgba[0] = color[2];			//z
 						rgba[1] = color[1];			//y
@@ -180,7 +198,13 @@ public:
 					if (j / step % d < b) {
 						for (int k = 0; k < WIDTHBASE; k++) {
 							uchar* color = lineStyle + k * COLORSIZE;
+							if (i + k * lineWidth>= mat.rows) {
+								break;
+							}
 							for (int l = 0; l < lineWidth; l++) {
+								if (i + k * lineWidth + l >= mat.rows) {
+									break;
+								}
 								Vec4b &rgba = mat.at<Vec4b>(i + k * lineWidth + l, j);
 								rgba[0] = color[2];			//z
 								rgba[1] = color[1];			//x
@@ -255,7 +279,13 @@ public:
 				if ((j - start) / step % b < a) {
 					for (int k = 0; k < WIDTHBASE; k++) {
 						uchar* color = lineStyle + k * COLORSIZE;
+						if (i + k * lineWidth >= mat.rows) {
+							break;
+						}
 						for (int l = 0; l < lineWidth; l++) {
+							if (i + k * lineWidth + l >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + k * lineWidth + l, j);
 							rgba[0] = color[2];			//z
 							rgba[1] = color[1];			//x
@@ -277,7 +307,13 @@ public:
 			for (int j = 0; j < mat.cols; j += lineWidth * WIDTHBASE) {
 				for (int k = 0; k < WIDTHBASE; k++) {
 					uchar* color = lineStyle + (WIDTHBASE - k - 1)* COLORSIZE;
+					if (j + k * lineWidth >= mat.cols) {
+						break;
+					}
 					for (int l = 0; l < lineWidth; l++) {
+						if (j + k * lineWidth + l >= mat.cols) {
+							break;
+						}
 						Vec4b &rgba = mat.at<Vec4b>(i, j + k * lineWidth + l);
 						rgba[0] = color[2];			//z
 						rgba[1] = color[0];			//x
@@ -332,7 +368,13 @@ public:
 					if (j / step % d < b) {
 						for (int k = 0; k < WIDTHBASE; k++) {
 							uchar* color = lineStyle + (WIDTHBASE - k - 1) * COLORSIZE;
+							if (j + k * lineWidth >= mat.cols) {
+								break;
+							}
 							for (int l = 0; l < lineWidth; l++) {
+								if (j + k * lineWidth + l >= mat.cols) {
+									break;
+								}
 								Vec4b &rgba = mat.at<Vec4b>(i, j + k * lineWidth + l);
 								rgba[0] = color[2];			//z
 								rgba[1] = color[0];			//x
@@ -384,8 +426,15 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + k);
 							rgba[2] = color[1];
+
+							if (j + lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + lineWidth + k);
 							rgba1[2] = color1[1];
 						}
@@ -395,8 +444,15 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * b - lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * b - lineWidth + k);
 							rgba[2] = color[1];
+
+							if (j + step * b - lineWidth * 2 + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b - lineWidth * 2 + k);
 							rgba1[2] = color1[1];
 						}
@@ -409,8 +465,15 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * b + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * b + k);
 							rgba[2] = color[1];
+
+							if (j + step * b + lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b + lineWidth + k);
 							rgba1[2] = color1[1];
 						}
@@ -420,8 +483,15 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * d - lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * d - lineWidth + k);
 							rgba[2] = color[1];
+
+							if (j + step * d - lineWidth * 2 + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * d - lineWidth * 2 + k);
 							rgba1[2] = color1[1];
 						}
@@ -450,8 +520,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * b + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * b + k);
 							rgba[2] = color[1];
+							if (j + step * b + lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b + lineWidth + k);
 							rgba1[2] = color1[1];
 						}
@@ -461,8 +537,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * d - lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * d - lineWidth + k);
 							rgba[2] = color[1];
+							if (j + step * d - lineWidth * 2 + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * d - lineWidth * 2 + k);
 							rgba1[2] = color1[1];
 						}
@@ -475,8 +557,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + k);
 							rgba[2] = color[1];
+							if (j + lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + lineWidth + k);
 							rgba1[2] = color1[1];
 						}
@@ -486,8 +574,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++) {
+							if (j + step * b - lineWidth + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i, j + step * b - lineWidth + k);
 							rgba[2] = color[1];
+							if (j + step * b - lineWidth * 2 + k >= mat.cols) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i, j + step * b - lineWidth * 2 + k);
 							rgba1[2] = color1[1];
 						}
@@ -497,7 +591,6 @@ public:
 		}
 
 	}
-
 
 	void ColsFirstEdge(int a, int b, int c, int d) {
 		/*
@@ -516,8 +609,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + k, j);
 							rgba[1] = color[1];
+							if (i + lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + lineWidth + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -527,8 +626,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * a - lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * a - lineWidth + k, j);
 							rgba[1] = color[1];
+							if (i + step * a - lineWidth * 2 + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * a - lineWidth * 2 + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -541,8 +646,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * a + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * a + k, j);
 							rgba[1] = color[1];
+							if (i + step * a + lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * a + lineWidth + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -552,8 +663,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * c - lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * c - lineWidth + k, j);
 							rgba[1] = color[1];
+							if (i + step * c - lineWidth * 2 + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * c - lineWidth * 2 + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -580,8 +697,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * a + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * a + k, j);
 							rgba[1] = color[1];
+							if (i + step * a + lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * a + lineWidth + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -591,8 +714,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * c - lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * c - lineWidth + k, j);
 							rgba[1] = color[1];
+							if (i + step * c - lineWidth * 2 + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * c - lineWidth * 2 + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -605,8 +734,14 @@ public:
 						uchar* color = lineStyle;
 						uchar* color1 = lineStyle + 1 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + k, j);
 							rgba[1] = color[1];
+							if (i + lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + lineWidth + k, j);
 							rgba1[1] = color1[1];
 						}
@@ -616,8 +751,14 @@ public:
 						uchar* color = lineStyle + 7 * COLORSIZE;
 						uchar* color1 = lineStyle + 6 * COLORSIZE;
 						for (int k = 0; k < lineWidth; k++){
+							if (i + step * a - lineWidth + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba = mat.at<Vec4b>(i + step * a - lineWidth + k, j);
 							rgba[1] = color[1];
+							if (i + step * a - lineWidth * 2 + k >= mat.rows) {
+								break;
+							}
 							Vec4b &rgba1 = mat.at<Vec4b>(i + step * a - lineWidth * 2 + k, j);
 							rgba1[1] = color1[1];
 						}

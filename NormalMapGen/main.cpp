@@ -1,5 +1,6 @@
 #include<iostream> 
 #include "normalGen.h"
+#include "lineGen.h"
 
 
 using namespace std;
@@ -221,18 +222,62 @@ void NormalMapGen1(){
 }
 
 void NormalMapGen() {
-	NormalMap nmap = NormalMap(512);
+	NormalMap nmap = NormalMap(2048);
 
 	//nmap.ColsGenAll();
 	//nmap.RowsGenLean(4, 4, 3, 1);
 	//nmap.writeToFile("mat_.png");
+
+	/*different lines*/
+	nmap.setLineStyle(5);
+	nmap.ColsGenAll();
+	nmap.setLineStyle(1);
+	nmap.RowsGenLean(3, 6);
+	nmap.writeToFile("lean0W11S51.png");
+
+	nmap.setLineStyle(5);
+	nmap.setLineWidth(1);
+	nmap.ColsGenAll();
+	nmap.setLineWidth(2);
+	nmap.RowsGenLean(3, 6);
+	nmap.writeToFile("lean1W12S55.png");
+
+	nmap.setLineStyle(5);
+	nmap.setLineWidth(1);
+	nmap.ColsGenAll();
+	nmap.RowsGenLean(3, 6);
+	nmap.writeToFile("lean2W11S55.png");
+
+	nmap.setLineStyle(5);
+	nmap.setLineWidth(1);
+	nmap.ColsGenAll();
+	nmap.setLineStyle(1);
+	nmap.setLineWidth(2);
+	nmap.RowsGenLean(3, 6);
+	nmap.writeToFile("lean3W12S51.png");
+	
+	/*lean
+
 	nmap.setLineStyle(1);
 	nmap.setLineWidth(1);
 
+	nmap.ColsGenAll();
+	nmap.RowsGenLean(3, 6);
+	nmap.writeToFile("lean.png");
+
+	nmap.ColsGenAll();
+	nmap.RowsGenLean(1, 6);
+	nmap.writeToFile("lean1.png");
+
+	nmap.ColsGenAll();
+	nmap.RowsGenLean(2, 5, 1, 2);
+	nmap.writeToFile("lean2.png");
 
 	nmap.ColsGenAll();
 	nmap.RowsGenLean(2, 4, 2, 3);
-	nmap.writeToFile("lean6.png");
+	nmap.writeToFile("lean3.png");
+	*/
+
 
 	/*
 		size
