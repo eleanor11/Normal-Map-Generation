@@ -221,6 +221,37 @@ void NormalMapGen1(){
 	imwrite("newim.png", mat, compression_params);
 }
 
+void LinenPlain(int size, string name) {
+	NormalMap nmap = NormalMap(size);
+
+	nmap.GenFlatAll();
+	nmap.setLineStyle(1);
+	nmap.ColsGenInterval(1, 2);
+	nmap.RowsGenInterval(1, 1, 2, 2, 1, 1);
+	nmap.writeToFile("linenPlain_" + name + ".png");
+}
+void CreprDeChine(int size, string name) {
+	NormalMap nmap = NormalMap(size);
+
+	nmap.GenFlatAll();
+	nmap.setLineStyle(3);
+	nmap.ColsGenInterval(1, 2);
+	nmap.setLineStyle(2);
+	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
+	nmap.writeToFile("creprDeChine_" + name + ".png");
+}
+void PolyesterStainCharmeuseFront(int size, string name) {
+	NormalMap nmap = NormalMap(size);
+
+	nmap.GenFlatAll();
+	nmap.setLineStyle(4);
+	nmap.ColsGenAll();
+	nmap.setLineStyle(5);
+	nmap.RowsGenLean(1, 5, 1, 2);
+	nmap.writeToFile("polyesterStainCharmeuse_" + name + ".png");
+
+}
+
 void NormalMapGen() {
 	NormalMap nmap = NormalMap(2048);
 
@@ -228,7 +259,17 @@ void NormalMapGen() {
 	//nmap.RowsGenLean(4, 4, 3, 1);
 	//nmap.writeToFile("mat_.png");
 
-	/*different lines*/
+	CreprDeChine(32, "");
+
+	/*3 different tex
+	LinenPlain(2048, "W1");
+	LinenPlain(64, "64");
+	CreprDeChine(2048, "W1");
+	CreprDeChine(64, "64");
+	PolyesterStainCharmeuseFront(2048, "W1");
+	PolyesterStainCharmeuseFront(64, "64");
+	*/
+	/*different lines
 	nmap.setLineStyle(5);
 	nmap.ColsGenAll();
 	nmap.setLineStyle(1);
@@ -255,7 +296,9 @@ void NormalMapGen() {
 	nmap.setLineWidth(2);
 	nmap.RowsGenLean(3, 6);
 	nmap.writeToFile("lean3W12S51.png");
-	
+	*/
+
+
 	/*lean
 
 	nmap.setLineStyle(1);
@@ -392,12 +435,32 @@ void NormalMapGet() {
 
 int main()
 {
-	if (1) {
-		NormalMapGen();
-		//NormalMapGet();
+	if (0) {
+		//plain
+		//lineGen(8, -60);
+
+		//crete de chine
+		//lineGen(7, -85);
+		//lineGen(6, -60);
+
+		//front polyester stain charmeuse 
+		lineGen(2, -45);
+		lineGen(2, -65);
+		lineGen(4, -85);
+
+		system("pause");
+
+		return 0;
 	}
 	else {
-		NormalMapGet();
+
+		if (1) {
+			NormalMapGen();
+			//NormalMapGet();
+		}
+		else {
+			NormalMapGet();
+		}
 	}
 
 

@@ -26,5 +26,8 @@
     <ClInclude Include="lineGen.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="BRDFGen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
