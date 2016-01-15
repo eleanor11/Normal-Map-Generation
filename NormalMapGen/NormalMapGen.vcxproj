@@ -85,7 +85,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BRDFGen.h" />
     <ClInclude Include="lineGen.h" />
     <ClInclude Include="normalGen.h" />
   </ItemGroup>

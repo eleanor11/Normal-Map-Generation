@@ -2,7 +2,6 @@
 #include "normalGen.h"
 #include "lineGen.h"
 
-
 using namespace std;
 
 void NormalMapGen1(){
@@ -248,10 +247,41 @@ void PolyesterStainCharmeuseFront(int size, string name) {
 	nmap.ColsGenAll();
 	nmap.setLineStyle(5);
 	nmap.RowsGenLean(1, 5, 1, 2);
-	nmap.writeToFile("polyesterStainCharmeuse_" + name + ".png");
+	nmap.writeToFile("polyesterStainCharmeuseFront_" + name + ".png");
 
 }
+void PolyesterStainCharmeuseBack(int size, string name) {
+	NormalMap nmap = NormalMap(size);
 
+	nmap.GenFlatAll();
+	nmap.setLineStyle(6);
+	nmap.ColsGenAll();
+	nmap.setLineStyle(7);
+	nmap.RowsGenLean(4, 5, 1, 2);
+	nmap.writeToFile("polyesterStainCharmeuseBack_" + name + ".png");
+
+}
+void Velvet(int size, string name) {
+	NormalMap nmap = NormalMap(size);
+
+	nmap.GenFlatAll();
+	nmap.setLineStyle(9);
+	nmap.ColsGenInterval(1, 2);
+	nmap.setLineStyle(8);
+	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
+	nmap.writeToFile("velvet_" + name + ".png");
+
+}
+void SilkShot(int size, string name) {
+	NormalMap nmap = NormalMap(size);
+
+	nmap.GenFlatAll();
+	nmap.setLineStyle(11);
+	nmap.ColsGenInterval(1, 2);
+	nmap.setLineStyle(10);
+	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
+	nmap.writeToFile("silkShot_" + name + ".png");
+}
 void NormalMapGen() {
 	NormalMap nmap = NormalMap(2048);
 
@@ -259,7 +289,12 @@ void NormalMapGen() {
 	//nmap.RowsGenLean(4, 4, 3, 1);
 	//nmap.writeToFile("mat_.png");
 
-	CreprDeChine(32, "");
+	PolyesterStainCharmeuseBack(2048, "W1");
+	PolyesterStainCharmeuseBack(64, "64");
+	Velvet(2048, "W1");
+	Velvet(64, "64");
+	SilkShot(2048, "W1");
+	SilkShot(64, "64");
 
 	/*3 different tex
 	LinenPlain(2048, "W1");
@@ -435,24 +470,7 @@ void NormalMapGet() {
 
 int main()
 {
-	if (0) {
-		//plain
-		//lineGen(8, -60);
-
-		//crete de chine
-		//lineGen(7, -85);
-		//lineGen(6, -60);
-
-		//front polyester stain charmeuse 
-		lineGen(2, -45);
-		lineGen(2, -65);
-		lineGen(4, -85);
-
-		system("pause");
-
-		return 0;
-	}
-	else {
+	if (1) {
 
 		if (1) {
 			NormalMapGen();
@@ -461,6 +479,42 @@ int main()
 		else {
 			NormalMapGet();
 		}
+
+	}
+	else {
+
+
+		//plain
+		//lineGen(8, -60);
+
+		//crete de chine
+		//lineGen(7, -85);
+		//lineGen(6, -60);
+
+		//front polyester stain charmeuse 
+		//lineGen(2, -45);
+		//lineGen(2, -65);
+		//lineGen(4, -85);
+
+		//back polyester stain charmeuse 
+		//lineGen(2, -45);
+		//lineGen(3, -83);
+		//lineGen(3, -87);
+
+		//velvet 1
+		//lineGen(64, 0);
+
+		//velvet 2
+		//lineGen(56, 0);
+
+		//silk shot
+		//lineGen(4, -60);
+		//lineGen(8, -30);	//kou diao zhong jian si ge
+
+		system("pause");
+
+		return 0;
+
 	}
 
 

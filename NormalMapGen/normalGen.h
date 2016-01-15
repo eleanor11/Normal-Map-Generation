@@ -8,7 +8,7 @@ using namespace cv;
 
 const int WIDTHBASE = 8;
 const int COLORSIZE = 4;
-const int LINESTYLES = 11;
+const int LINESTYLES = 17;
 
 /*verticle: x, y, z, a*/
 uchar FLAT[COLORSIZE] = {127, 127, 255, 255};
@@ -89,6 +89,84 @@ uchar LINESTYLE[WIDTHBASE * COLORSIZE * LINESTYLES] = {
 	127, 116, 254, 255,
 	127, 73, 243, 255,
 	127, 37, 217, 255,
+
+	/* 6 */
+	/*
+	back side of polyester stain charmeuse facric row
+	*/
+	127, 138, 254, 255,
+	127, 134, 254, 255,
+	127, 131, 254, 255,
+	127, 127, 254, 255,
+	127, 123, 254, 255,
+	127, 120, 254, 255,
+	127, 116, 254, 255,
+	0, 0, 0, 0,
+
+	/* 7 */
+	/*
+	back side of polyester stain charmeuse facric col
+	*/
+	127, 217, 217, 255,
+	127, 143, 254, 255,
+	127, 127, 255, 255,
+	127, 111, 254, 255,
+	127, 37, 217, 255,
+	127, 134, 254, 255,
+	127, 127, 244, 255,
+	127, 120, 254, 255,
+
+	/* 8 */
+	/*
+	velvet facric row
+	*/
+	127, 250, 159, 255,
+	127, 246, 172, 255,
+	127, 242, 181, 255,
+	127, 238, 189, 255,
+	127, 16, 189, 255,
+	127, 12, 181, 255,
+	127, 8, 172, 255,
+	127, 4, 159, 255,
+
+	/* 9 */
+	/*
+	velvet facric col
+	*/
+	127, 37, 217, 255,
+	127, 32, 212, 255,
+	127, 27, 206, 255,
+	127, 23, 200, 255,
+	127, 18, 193, 255,
+	127, 13, 185, 255,
+	127, 9, 175, 255,
+	127, 4, 161, 255,
+
+	/* 10 */
+	/*
+	silk shot facric row
+	*/
+	127, 138, 254, 255,
+	127, 134, 254, 255,
+	127, 131, 254, 255,
+	127, 127, 254, 255,
+	127, 123, 254, 255,
+	127, 120, 254, 255,
+	127, 116, 254, 255,
+	0, 0, 0, 0,
+
+	/* 11 */
+	/*
+	silk shot facric col
+	*/
+	127, 237, 191, 255,
+	127, 206, 227, 255,
+	127, 191, 237, 255,
+	127, 148, 253, 255,
+	127, 106, 253, 255,
+	127, 63, 237, 255,
+	127, 48, 227, 255,
+	127, 17, 191, 255,
 
 	/* 0 */
 	127, 255, 191, 255,
@@ -192,14 +270,14 @@ public:
 		imwrite(name, mat, compression_params);
 		imwrite("b" + name, bmat, compression_params);
 
-		for (int i = 0; i < scale; i++) {
-			for (int j = 0; j < scale; j++) {
-				if (bmat.at<uchar>(i, j) > 0 && bmat.at<uchar>(i, j) < 255) {
-					std::cout << i << ' ' << j << std::endl;
-				}
-			}
-		}
-		system("pause");
+		//for (int i = 0; i < scale; i++) {
+		//	for (int j = 0; j < scale; j++) {
+		//		if (bmat.at<uchar>(i, j) > 0 && bmat.at<uchar>(i, j) < 255) {
+		//			std::cout << i << ' ' << j << std::endl;
+		//		}
+		//	}
+		//}
+		//system("pause");
 
 	}
 
