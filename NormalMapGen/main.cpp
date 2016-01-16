@@ -289,21 +289,70 @@ void NormalMapGen() {
 	//nmap.RowsGenLean(4, 4, 3, 1);
 	//nmap.writeToFile("mat_.png");
 
-	PolyesterStainCharmeuseBack(2048, "W1");
-	PolyesterStainCharmeuseBack(64, "64");
-	Velvet(2048, "W1");
-	Velvet(64, "64");
-	SilkShot(2048, "W1");
-	SilkShot(64, "64");
+	/*all line model*/
+	nmap = NormalMap(64);
+	nmap.setLineStyle(1);
+	nmap.GenFlatAll();
+	nmap.RowsGenAll();
+	nmap.writeToFile("line0.png");
+	nmap.setLineStyle(1);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line1.png");
 
-	/*3 different tex
-	LinenPlain(2048, "W1");
-	LinenPlain(64, "64");
-	CreprDeChine(2048, "W1");
-	CreprDeChine(64, "64");
-	PolyesterStainCharmeuseFront(2048, "W1");
-	PolyesterStainCharmeuseFront(64, "64");
-	*/
+	nmap.setLineStyle(2);
+	nmap.GenFlatAll();
+	nmap.RowsGenAll();
+	nmap.writeToFile("line2.png");
+	nmap.setLineStyle(3);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line3.png");
+
+	nmap.setLineStyle(4);
+	nmap.GenFlatAll();
+	nmap.RowsGenAll();
+	nmap.writeToFile("line4.png");
+	nmap.setLineStyle(5);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line5.png");
+
+	nmap.setLineStyle(6);
+	nmap.GenFlatAll();
+	nmap.RowsGenAll();
+	nmap.writeToFile("line6.png");
+	nmap.setLineStyle(7);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line7.png");
+
+	nmap.setLineStyle(8);
+	nmap.RowsGenAll();
+	nmap.writeToFile("line8.png");
+	nmap.setLineStyle(9);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line9.png");
+
+	nmap.setLineStyle(10);
+	nmap.GenFlatAll();
+	nmap.RowsGenAll();
+	nmap.writeToFile("line10.png");
+	nmap.setLineStyle(11);
+	nmap.ColsGenAll();
+	nmap.writeToFile("line11.png");
+
+	//PolyesterStainCharmeuseBack(2048, "W1");
+	//PolyesterStainCharmeuseBack(64, "64");
+	//Velvet(2048, "W1");
+	//Velvet(64, "64");
+	//SilkShot(2048, "W1");
+	//SilkShot(64, "64");
+
+	/*3 different tex*/
+	//LinenPlain(2048, "W1");
+	//LinenPlain(64, "64");
+	//CreprDeChine(2048, "W1");
+	//CreprDeChine(64, "64");
+	//PolyesterStainCharmeuseFront(2048, "W1");
+	//PolyesterStainCharmeuseFront(64, "64");
+	
 	/*different lines
 	nmap.setLineStyle(5);
 	nmap.ColsGenAll();
@@ -485,7 +534,7 @@ int main()
 
 
 		//plain
-		//lineGen(8, -60);
+		//lineGen(8, -75);
 
 		//crete de chine
 		//lineGen(7, -85);

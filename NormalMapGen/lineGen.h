@@ -23,7 +23,7 @@ void exchange(double x) {
 	double theta = atan2(y, x);
 
 	//cout << x << " " << y << " ";
-	//cout << int(theta / pi * 180) << " " << changeCos(theta) << " " << changeSin(theta) << endl;
+	cout << int(theta / pi * 180) << " " << changeCos(theta) << " " << changeSin(theta) << endl;
 }
 
 void lineGen(int t) {
