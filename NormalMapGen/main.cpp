@@ -227,7 +227,8 @@ void LinenPlain(int size, string name) {
 	nmap.setLineStyle(1);
 	nmap.ColsGenInterval(1, 2);
 	nmap.RowsGenInterval(1, 1, 2, 2, 1, 1);
-	nmap.writeToFile("linenPlain_" + name + ".png");
+	//nmap.writeToFile("linenPlain_" + name + ".png");
+	nmap.writeToFile("linenPlain");
 }
 void CreprDeChine(int size, string name) {
 	NormalMap nmap = NormalMap(size);
@@ -237,7 +238,9 @@ void CreprDeChine(int size, string name) {
 	nmap.ColsGenInterval(1, 2);
 	nmap.setLineStyle(2);
 	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
-	nmap.writeToFile("creprDeChine_" + name + ".png");
+	//nmap.writeToFile("creprDeChine_" + name + ".png");
+
+	nmap.writeToFile("creprDeChine");
 }
 void PolyesterStainCharmeuseFront(int size, string name) {
 	NormalMap nmap = NormalMap(size);
@@ -247,7 +250,8 @@ void PolyesterStainCharmeuseFront(int size, string name) {
 	nmap.ColsGenAll();
 	nmap.setLineStyle(5);
 	nmap.RowsGenLean(1, 5, 1, 2);
-	nmap.writeToFile("polyesterStainCharmeuseFront_" + name + ".png");
+	//nmap.writeToFile("polyesterStainCharmeuseFront_" + name + ".png");
+	nmap.writeToFile("polyesterStainCharmeuseFront");
 
 }
 void PolyesterStainCharmeuseBack(int size, string name) {
@@ -258,7 +262,8 @@ void PolyesterStainCharmeuseBack(int size, string name) {
 	nmap.ColsGenAll();
 	nmap.setLineStyle(7);
 	nmap.RowsGenLean(4, 5, 1, 2);
-	nmap.writeToFile("polyesterStainCharmeuseBack_" + name + ".png");
+	//nmap.writeToFile("polyesterStainCharmeuseBack_" + name + ".png");
+	nmap.writeToFile("polyesterStainCharmeuseBack");
 
 }
 void Velvet(int size, string name) {
@@ -283,60 +288,60 @@ void SilkShot(int size, string name) {
 	nmap.writeToFile("silkShot_" + name + ".png");
 }
 void NormalMapGen() {
-	NormalMap nmap = NormalMap(2048);
+	NormalMap nmap = NormalMap(512);
 
 	//nmap.ColsGenAll();
 	//nmap.RowsGenLean(4, 4, 3, 1);
 	//nmap.writeToFile("mat_.png");
 
 	/*all line model*/
-	nmap = NormalMap(64);
-	nmap.setLineStyle(1);
-	nmap.GenFlatAll();
-	nmap.RowsGenAll();
-	nmap.writeToFile("line0.png");
-	nmap.setLineStyle(1);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line1.png");
+	//nmap = NormalMap(64);
+	//nmap.setLineStyle(1);
+	//nmap.GenFlatAll();
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line0.png");
+	//nmap.setLineStyle(1);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line1.png");
 
-	nmap.setLineStyle(2);
-	nmap.GenFlatAll();
-	nmap.RowsGenAll();
-	nmap.writeToFile("line2.png");
-	nmap.setLineStyle(3);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line3.png");
+	//nmap.setLineStyle(2);
+	//nmap.GenFlatAll();
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line2.png");
+	//nmap.setLineStyle(3);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line3.png");
 
-	nmap.setLineStyle(4);
-	nmap.GenFlatAll();
-	nmap.RowsGenAll();
-	nmap.writeToFile("line4.png");
-	nmap.setLineStyle(5);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line5.png");
+	//nmap.setLineStyle(4);
+	//nmap.GenFlatAll();
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line4.png");
+	//nmap.setLineStyle(5);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line5.png");
 
-	nmap.setLineStyle(6);
-	nmap.GenFlatAll();
-	nmap.RowsGenAll();
-	nmap.writeToFile("line6.png");
-	nmap.setLineStyle(7);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line7.png");
+	//nmap.setLineStyle(6);
+	//nmap.GenFlatAll();
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line6.png");
+	//nmap.setLineStyle(7);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line7.png");
 
-	nmap.setLineStyle(8);
-	nmap.RowsGenAll();
-	nmap.writeToFile("line8.png");
-	nmap.setLineStyle(9);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line9.png");
+	//nmap.setLineStyle(8);
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line8.png");
+	//nmap.setLineStyle(9);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line9.png");
 
-	nmap.setLineStyle(10);
-	nmap.GenFlatAll();
-	nmap.RowsGenAll();
-	nmap.writeToFile("line10.png");
-	nmap.setLineStyle(11);
-	nmap.ColsGenAll();
-	nmap.writeToFile("line11.png");
+	//nmap.setLineStyle(10);
+	//nmap.GenFlatAll();
+	//nmap.RowsGenAll();
+	//nmap.writeToFile("line10.png");
+	//nmap.setLineStyle(11);
+	//nmap.ColsGenAll();
+	//nmap.writeToFile("line11.png");
 
 	//PolyesterStainCharmeuseBack(2048, "W1");
 	//PolyesterStainCharmeuseBack(64, "64");
@@ -344,6 +349,21 @@ void NormalMapGen() {
 	//Velvet(64, "64");
 	//SilkShot(2048, "W1");
 	//SilkShot(64, "64");
+
+	LinenPlain(512, "512");
+	CreprDeChine(512, "512");
+	PolyesterStainCharmeuseFront(512, "512");
+	PolyesterStainCharmeuseBack(512, "512");
+
+	//LinenPlain(1024, "1024");
+	//CreprDeChine(1024, "1024");
+	//PolyesterStainCharmeuseFront(1024, "1024");
+	//PolyesterStainCharmeuseBack(1024, "1024");
+
+	//LinenPlain(2048, "2048");
+	//CreprDeChine(2048, "2048");
+	//PolyesterStainCharmeuseFront(2048, "2048");
+	//PolyesterStainCharmeuseBack(2048, "2048");
 
 	/*3 different tex*/
 	//LinenPlain(2048, "W1");

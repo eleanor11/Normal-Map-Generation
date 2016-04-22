@@ -281,8 +281,11 @@ public:
 		compression_params.push_back(IMWRITE_PNG_COMPRESSION);
 		compression_params.push_back(9);
 
-		imwrite(name, mat, compression_params);
-		imwrite("b" + name, bmat, compression_params);
+		//imwrite(name, mat, compression_params);
+		//imwrite("b" + name, bmat, compression_params);
+
+		imwrite("n" + name + ".bmp", mat);
+		imwrite("b" + name + ".bmp", bmat);
 
 		//for (int i = 0; i < scale; i++) {
 		//	for (int j = 0; j < scale; j++) {
