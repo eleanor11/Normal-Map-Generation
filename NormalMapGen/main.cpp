@@ -228,7 +228,7 @@ void LinenPlain(int size, string name) {
 	nmap.ColsGenInterval(1, 2);
 	nmap.RowsGenInterval(1, 1, 2, 2, 1, 1);
 	//nmap.writeToFile("linenPlain_" + name + ".png");
-	nmap.writeToFile("linenPlain");
+	nmap.writeToFile("LinenPlain");
 }
 void CreprDeChine(int size, string name) {
 	NormalMap nmap = NormalMap(size);
@@ -240,7 +240,7 @@ void CreprDeChine(int size, string name) {
 	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
 	//nmap.writeToFile("creprDeChine_" + name + ".png");
 
-	nmap.writeToFile("creprDeChine");
+	nmap.writeToFile("CreprDeChine");
 }
 void PolyesterStainCharmeuseFront(int size, string name) {
 	NormalMap nmap = NormalMap(size);
@@ -251,7 +251,7 @@ void PolyesterStainCharmeuseFront(int size, string name) {
 	nmap.setLineStyle(5);
 	nmap.RowsGenLean(1, 5, 1, 2);
 	//nmap.writeToFile("polyesterStainCharmeuseFront_" + name + ".png");
-	nmap.writeToFile("polyesterStainCharmeuseFront");
+	nmap.writeToFile("PolyesterStainCharmeuseFront");
 
 }
 void PolyesterStainCharmeuseBack(int size, string name) {
@@ -263,7 +263,7 @@ void PolyesterStainCharmeuseBack(int size, string name) {
 	nmap.setLineStyle(7);
 	nmap.RowsGenLean(4, 5, 1, 2);
 	//nmap.writeToFile("polyesterStainCharmeuseBack_" + name + ".png");
-	nmap.writeToFile("polyesterStainCharmeuseBack");
+	nmap.writeToFile("PolyesterStainCharmeuseBack");
 
 }
 void Velvet(int size, string name) {
@@ -274,7 +274,7 @@ void Velvet(int size, string name) {
 	nmap.ColsGenInterval(1, 2);
 	nmap.setLineStyle(8);
 	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
-	nmap.writeToFile("velvet_" + name + ".png");
+	nmap.writeToFile("Velvet_" + name + ".png");
 
 }
 void SilkShot(int size, string name) {
@@ -285,7 +285,7 @@ void SilkShot(int size, string name) {
 	nmap.ColsGenInterval(1, 2);
 	nmap.setLineStyle(10);
 	nmap.RowsGenInterval(1, 1, 2, 2, 0, 1);
-	nmap.writeToFile("silkShot_" + name + ".png");
+	nmap.writeToFile("SilkShot_" + name + ".png");
 }
 void NormalMapGen() {
 	NormalMap nmap = NormalMap(512);

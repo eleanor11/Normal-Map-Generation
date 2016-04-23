@@ -262,16 +262,16 @@ private:
 
 		for (int i = 0; i < brcmat.rows; i++) {
 			for (int j = 0; j < brcmat.cols; j++) {
-				Vec3b &rgb = brcmat.at<Vec3b>(i, j);
-				rgb[0] = bmat.at<uchar>(i, j);
-				if (rows[i]) rgb[1] = 255;
-				else rgb[1] = 0;
-				if (cols[j]) rgb[2] = 255;
-				else rgb[2] = 0;
+				Vec3b &bgr = brcmat.at<Vec3b>(i, j);
+				if (rows[i]) bgr[0] = 255;
+				else bgr[0] = 0;
+				if (cols[j]) bgr[1] = 255;
+				else bgr[1] = 0;
+				bgr[2] = bmat.at<uchar>(i, j);
 			}
 		}
 
-		imwrite("b" + name + ".bmp", brcmat);
+		imwrite("brc" + name + ".bmp", brcmat);
 	}
 
 	void outputRowmapAndColmap(String name) {
@@ -329,10 +329,9 @@ public:
 
 
 		imwrite("n" + name + ".bmp", nmat);
-		
-		//imwrite("b" + name + ".bmp", bmat);
+		imwrite("b" + name + ".bmp", bmat);
 		outputBitRowColmap(name);
-		//outputRowmapAndColmap(name);
+		outputRowmapAndColmap(name);
 
 		//for (int i = 0; i < scale; i++) {
 		//	for (int j = 0; j < scale; j++) {
