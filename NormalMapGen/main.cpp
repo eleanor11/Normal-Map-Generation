@@ -350,6 +350,7 @@ void NormalMapGen() {
 	//SilkShot(2048, "W1");
 	//SilkShot(64, "64");
 
+	/*all textures*/
 	LinenPlain(512, "512");
 	CreprDeChine(512, "512");
 	PolyesterStainCharmeuseFront(512, "512");
